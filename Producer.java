@@ -7,6 +7,7 @@ class Producer implements Runnable {
     private final PipedOutputStream out;
 
     public Producer(PipedOutputStream out) {
+        //register output
         this.out = out;
     }
 
@@ -17,10 +18,13 @@ class Producer implements Runnable {
         
         try {
             while (i < 101) {
+                //generate and write to stream
+                //by pipedoutputstream implementation, data wont be written if the buffer is full
                 System.out.println("Generated: " + i);
                 out.write(i);
                 out.flush();
                 i++;
+                //sleep less than consumer
                 Thread.sleep(1000);
             }
         } catch (IOException | InterruptedException e) {
