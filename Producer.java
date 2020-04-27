@@ -20,7 +20,7 @@ class Producer implements Runnable {
             while (i < 101) {
                 //generate and write to stream
                 //by pipedoutputstream implementation, data wont be written if the buffer is full
-                System.out.println("Generated: " + i);
+                System.out.println("Produced: " + i);
                 out.write(i);
                 out.flush();
                 i++;
